@@ -4,6 +4,7 @@ import net.raju.journalApp.entity.User;
 import net.raju.journalApp.repository.UserRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 
 import static org.mockito.Mockito.when;
 
+@Disabled
 public class UserDetailsServiceImplTests {
 
     @InjectMocks

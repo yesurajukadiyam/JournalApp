@@ -15,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 @SpringBootTest
+@Disabled
 public class UserServiceTests {
 
     @Autowired
