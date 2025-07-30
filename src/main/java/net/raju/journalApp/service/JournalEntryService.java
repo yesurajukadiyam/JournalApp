@@ -1,5 +1,6 @@
 package net.raju.journalApp.service;
 
+import lombok.extern.slf4j.Slf4j;
 import net.raju.journalApp.entity.JournalEntry;
 import net.raju.journalApp.entity.User;
 import net.raju.journalApp.repository.JournalEntryRepository;
@@ -12,9 +13,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
-import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
-
 @Component
+@Slf4j
 public class JournalEntryService {
 
     @Autowired
@@ -31,7 +31,7 @@ public class JournalEntryService {
             user.getJournalEntries().add(saved);
             userService.saveUser(user);
         } catch (Exception e){
-            log.print("Exception " + e);
+            log.error("Exception " + e);
             throw new RuntimeException("An error while saving the entry.");
         }
     }
@@ -60,7 +60,7 @@ public class JournalEntryService {
                journalEntryRepository.deleteById(id);
            }
        } catch(Exception e){
-           System.out.print(e);
+           log.error("Error",e);
            throw new RuntimeException("An error occured while deleting the entry.",e);
        }
         return removed;

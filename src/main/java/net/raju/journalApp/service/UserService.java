@@ -1,5 +1,6 @@
 package net.raju.journalApp.service;
 
+import lombok.extern.slf4j.Slf4j;
 import net.raju.journalApp.entity.User;
 import net.raju.journalApp.repository.UserRepository;
 import org.bson.types.ObjectId;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
+@Slf4j
 public class UserService {
 
     @Autowired
@@ -21,10 +23,18 @@ public class UserService {
     private static final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
 
-    public void saveNewUser(User user){
-        user.setPassword( passwordEncoder.encode(user.getPassword()) );
-        user.setRoles(Arrays.asList("USER"));
-        userRepository.save(user);
+    public boolean saveNewUser(User user){
+        try {
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            user.setRoles(Arrays.asList("USER"));
+            userRepository.save(user);
+            return true;
+        }catch(Exception e) {
+            log.info("for information",e);
+            log.error("for error purpose {} :",user.getUserName(),e);
+            log.warn("for waring purpose",e);
+            return false;
+        }
     }
 
     public void saveAdmin(User user) {
