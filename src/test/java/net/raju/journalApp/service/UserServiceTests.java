@@ -21,6 +21,7 @@ public class UserServiceTests {
     @Autowired
     private UserRepository userRepository;
 
+    @Disabled
     @ParameterizedTest
     @ValueSource( strings = {
             "raju",

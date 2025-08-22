@@ -16,7 +16,6 @@ import java.util.ArrayList;
 
 import static org.mockito.Mockito.when;
 
-@Disabled
 public class UserDetailsServiceImplTests {
 
     @InjectMocks
@@ -30,6 +29,7 @@ public class UserDetailsServiceImplTests {
         MockitoAnnotations.initMocks(this);
     }
 
+    @Disabled
     @Test
     void loadUserByUsernameTest(){
         when(userRepository.findByUserName(ArgumentMatchers.anyString())).thenReturn(User.builder().userName("raju").password("inrinrick").roles(new ArrayList<>()).build());
